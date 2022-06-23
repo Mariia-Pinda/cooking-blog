@@ -17,12 +17,12 @@ class userController {
         console.log('17')
         if (!email || !password) {
             console.log('18')
-            return //next(ApiError.badRequest("Incorrect email or password!"))
+            return next(ApiError.badRequest("Incorrect email or password!"))
         }
         const candidate = await User.findOne({where: {email}})
         if (candidate) {
             console.log('23')
-            return // next(ApiError.badRequest("User exists!"))
+            return next(ApiError.badRequest("User exists!"))
         }
         console.log('26')
         const hashPassword = await bcrypt.hash(password, 5)
