@@ -27,7 +27,6 @@ class userController {
         console.log('26')
         const hashPassword = await bcrypt.hash(password, 5)
         const user = await User.create({email, password: hashPassword})
-        // const saved = await Saved.create({userId: user.id})
         const token = generateJwt(user.id, user.email)
         return res.json({token})
     }
